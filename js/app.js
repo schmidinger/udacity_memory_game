@@ -51,6 +51,7 @@ function makeUL(array) {
 
 
 function restarting(){
+  'use strict';
   $(".restart").each(function(){
     $( ".restart" ).click(function() {
       //by clicking on the restart button you reload the page
@@ -60,6 +61,7 @@ function restarting(){
 
 function shuffle(array) {
   // Shuffle function from http://stackoverflow.com/a/2450976
+    'use strict';
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -76,17 +78,20 @@ function shuffle(array) {
 
 function open_card(list_item){
   //display the clicked card
+  'use strict';
   list_item.addClass("open show");
 }
 
 function add_to_opened_cards(list_item){
   //add the clicked card to a list
+  'use strict';
   list.push(list_item);
 }
 
 
 function remove_from_opened_cards(list_item){
   //remove the clicked card from a list
+  'use strict';
   list.pop(list_item);
   list_item.removeClass("open show");
 }
@@ -94,24 +99,28 @@ function remove_from_opened_cards(list_item){
 
 function matched(list_item){
   //add a class match so the user knows they guessed right
+  'use strict';
   list_item.addClass("match");
 }
 
 
 function delayedFunction(input_function) {
   //wait 2 seconds before executing the function
+  'use strict';
   window.setTimeout(input_function, 2000);
 }
 
 
 function timer (input_function) {
   //wait x seconds before executing the function
+  'use strict';
   window.setInterval(input_function, 1000);
 }
 
 
 function remove_stars(){
   //remove one star after 10 moves and another one after 20 moves
+  'use strict';
   if (start_move==1){
     var star = document.getElementById('stars');
     star.removeChild(star.childNodes[0]);
@@ -140,6 +149,7 @@ function remove_stars(){
 
 function matching(){
   //checks if there is more than one card open
+  'use strict';
   if (list.length>1){
     start_move++;
     moves.textContent = start_move+" move(s)";
@@ -165,6 +175,7 @@ function matching(){
 
 function play_game(){
   //function that executes all functions when clicking on the single card items
+  'use strict';
   $("#cards_deck li").each(function(){
     $(this).click(function(){
     //function to show the symbol of the card
@@ -177,6 +188,7 @@ function play_game(){
 //Alternative function to restarting:
 function restart_game(){
   //function to shuffle deck and start a new game
+  'use strict';
   $(".restart").each(function(){
     $( ".restart" ).click(function() {
       $('.remove_deck').empty();
@@ -187,7 +199,8 @@ function restart_game(){
 
 function game_won(){
     //function to check if all cards matched
-    if(matched_cards===4){
+    'use strict';
+    if(matched_cards===16){
         if(confirm("Congratulations, you won!!\nIt took you "+minutes+":"+seconds+" to finish the game with a "+star_rating+" star rating!"+"\nDo you want to play again?")){
           location.reload();
         }else{
@@ -197,6 +210,7 @@ function game_won(){
 
 function add() {
   //function to add seconds, minutes and hours to the timer
+  'use strict';
   seconds++;
   if (seconds >= 60) {
   seconds = 0;
@@ -211,21 +225,25 @@ function add() {
 
 function timer() {
   //function to repeat the add function every second
+  'use strict';
   t = setInterval(add, 1000);
   }
 
 // Start button
 start.onclick = function(){
+  'use strict';
   timer();
   }
 
 // Stop button
 stop.onclick = function() {
+  'use strict';
   clearTimeout(t);
   }
 
 
 $( document ).ready(function(){
+  'use strict';
   play_game();
   restarting();
   game_won();
